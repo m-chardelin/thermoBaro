@@ -1,0 +1,330 @@
+\documentclass{article} 
+ \usepackage[utf8]{inputenc}
+\usepackage[]{graphicx}
+\usepackage[]{subfigure}
+\usepackage[top=0.5cm, bottom=0.5cm, left=1cm, right=0.5cm]{geometry}
+\usepackage[]{multicol}
+\usepackage[]{setspace}
+\usepackage[]{stackengine}
+\usepackage[]{ccaption}
+\usepackage[]{booktabs}
+\usepackage[]{array}
+\usepackage[]{tikz}
+
+\newcommand{\points}{\begin{tabular}{l } 
+ \tabularnewline 
+Segmentation angle for grain detection :15 \tabularnewline 
+ Keep non-indexed points option :1 \tabularnewline 
+ Number of calculated grains :13861 \tabularnewline 
+\qquad  Number of calculated grains after removing small grains :9273 \tabularnewline 
+\qquad  \tabularnewline 
+\qquad  \tabularnewline 
+\qquad  Number of calculatedOlivine grains after removing small grains :2561 \tabularnewline 
+\qquad  Number of calculatedOrthopyroxene grains after removing small grains :1 \tabularnewline 
+\qquad  Number of calculatedClinopyroxene grains after removing small grains :229 \tabularnewline 
+\end{tabular}} 
+
+ \newcommand{\tab}{\begin{tabular}{l|l l l} 
+  Mineral &Points&A. Frac (NI)&A. Frac (I)  \tabularnewline  &  \tabularnewline 
+ \hline 
+ notIndexed&367607&0.16339&  \tabularnewline  
+ Olivine&1841150&0.81835&0.97818  \tabularnewline  
+ Clinopyroxene&17938&0.0079731&0.0095302  \tabularnewline  
+ Orthopyroxene&7&3.1114e-06&3.719e-06  \tabularnewline  
+ Calcite&1354&0.00060182&0.00071936  \tabularnewline  
+ Chromite&15483&0.0068819&0.0082259  \tabularnewline  
+ Magnetite&30&1.3334e-05&1.5939e-05  \tabularnewline  
+ Chlorite&3988&0.0017726&0.0021188  \tabularnewline  
+ Antigorite&2149&0.00095518&0.0011417  \tabularnewline  
+ Talc&120&5.3337e-05&6.3755e-05  \tabularnewline  
+ Tremolite&0&0.0&0.0  \tabularnewline  
+ \hline 
+ \end{tabular}} 
+
+\newcommand{\tabCPOa}{ 
+ \begin{tabular}{l l} 
+  \includegraphics[width=0.6 \linewidth]{DC61_OlivineCPOall.eps} & \includegraphics[scale = 0.29]{DC61_OlivineOlivine_ipf.eps}   \tabularnewline 
+ \end{tabular}} 
+
+\newcommand{\tabCPOb}{ 
+ \begin{tabular}{l l} 
+  \includegraphics[width=0.6 \linewidth]{DC61_ClinopyroxeneCPOall.eps} & \includegraphics[scale = 0.29]{DC61_ClinopyroxeneClinopyroxene_ipf.eps}   \tabularnewline 
+ \end{tabular}} 
+
+\newcommand{\minerala}{ 
+ \begin{tabular}{c} 
+O\tabularnewline 
+ L\tabularnewline 
+ I\tabularnewline 
+ V\tabularnewline 
+ I\tabularnewline 
+ N\tabularnewline 
+ E\tabularnewline 
+ \end{tabular}} 
+ 
+\newcommand{\mineralb}{ 
+ \begin{tabular}{c} 
+C\tabularnewline 
+ L\tabularnewline 
+ I\tabularnewline 
+ N\tabularnewline 
+ O\tabularnewline 
+ P\tabularnewline 
+ Y\tabularnewline 
+ R\tabularnewline 
+ O\tabularnewline 
+ X\tabularnewline 
+ E\tabularnewline 
+ N\tabularnewline 
+ E\tabularnewline 
+ 
+ \end{tabular}} 
+ 
+\newcommand{\percta}{ 
+ \begin{tabular}{c} 
+0\tabularnewline 
+ -\tabularnewline 
+ 2\tabularnewline 
+ 5\tabularnewline 
+ 
+ \end{tabular}} 
+ \newcommand{\perctb}{ 
+ \begin{tabular}{c} 
+2\tabularnewline 
+ 5\tabularnewline 
+ -\tabularnewline 
+ 5\tabularnewline 
+ 0\tabularnewline 
+ 
+ \end{tabular}} 
+ \newcommand{\perctc}{ 
+ \begin{tabular}{c} 
+5\tabularnewline 
+ 0\tabularnewline 
+ -\tabularnewline 
+ 7\tabularnewline 
+ 5\tabularnewline 
+ 
+ \end{tabular}} 
+ \newcommand{\perctd}{ 
+ \begin{tabular}{c} 
+7\tabularnewline 
+ 5\tabularnewline 
+ -\tabularnewline 
+ 1\tabularnewline 
+ 0\tabularnewline 
+ 0\tabularnewline 
+ 
+ \end{tabular}} 
+ 
+\newcommand{\CPOLITa}{ 
+ \begin{tabular}{l l} 
+ \includegraphics[height = 0.095\paperheight]{DC61_OlivineCPO0-25ClinopyroxeneGeo.eps} & \includegraphics[height = 0.095\paperheight, trim={0 0 0.5cm 0},clip]{DC61_2_15deg_MisorientationClinopyroxene0-25.eps} \tabularnewline 
+ \end{tabular}} 
+\newcommand{\CPOLITb}{ 
+ \begin{tabular}{l l} 
+ \includegraphics[height = 0.095\paperheight]{DC61_OlivineCPO25-50ClinopyroxeneGeoPoints.eps} & \includegraphics[height = 0.095\paperheight, trim={0 0 0.5cm 0},clip]{DC61_2_15deg_MisorientationClinopyroxene25-50.eps} \tabularnewline 
+ \end{tabular}} 
+\newcommand{\CPOLITc}{ 
+ \begin{tabular}{l l} 
+ \includegraphics[height = 0.095\paperheight]{DC61_OlivineCPO50-75ClinopyroxeneGeoPoints.eps} & \includegraphics[height = 0.095\paperheight, trim={0 0 0.5cm 0},clip]{DC61_2_15deg_MisorientationClinopyroxene50-75.eps} \tabularnewline 
+ \end{tabular}} 
+\newcommand{\CPOLITd}{ 
+ \begin{tabular}{l l} 
+ \includegraphics[height = 0.095\paperheight]{DC61_OlivineCPO75-100ClinopyroxeneGeoPoints.eps} & \includegraphics[height = 0.095\paperheight, trim={0 0 0.5cm 0},clip]{DC61_2_15deg_MisorientationClinopyroxene75-100.eps} \tabularnewline 
+ \end{tabular}} 
+\newcommand{\perctA }{ 
+ \begin{tabular}{l l} 
+ \percta & \CPOLITa \\ 
+ \perctb & \CPOLITb \\ 
+ \perctc & \CPOLITc \\ 
+ \perctd & \CPOLITd \\ 
+ \end{tabular}} 
+ \newcommand{\imga}{ 
+ \begin{tabular}{l} 
+ \includegraphics[width= 0.4\linewidth, angle = -90]{DC61_BOUNDARYClinopyroxene.eps} \tabularnewline  
+ \end{tabular}} 
+
+\newcommand{\CPOLITe}{ 
+ \begin{tabular}{l l} 
+ \includegraphics[height = 0.095\paperheight]{DC61_OlivineCPO0-25ChromiteGeo.eps} & \includegraphics[height = 0.095\paperheight, trim={0 0 0.5cm 0},clip]{DC61_2_15deg_MisorientationChromite0-25.eps} \tabularnewline 
+ \end{tabular}} 
+\newcommand{\CPOLITf}{ 
+ \begin{tabular}{l l} 
+ \includegraphics[height = 0.095\paperheight]{DC61_OlivineCPO25-50ChromiteGeoPoints.eps} & \includegraphics[height = 0.095\paperheight, trim={0 0 0.5cm 0},clip]{DC61_2_15deg_MisorientationChromite25-50.eps} \tabularnewline 
+ \end{tabular}} 
+\newcommand{\CPOLITg}{ 
+ \begin{tabular}{l l} 
+ \includegraphics[height = 0.095\paperheight]{DC61_OlivineCPO50-75ChromiteGeoPoints.eps} & \includegraphics[height = 0.095\paperheight, trim={0 0 0.5cm 0},clip]{DC61_2_15deg_MisorientationChromite50-75.eps} \tabularnewline 
+ \end{tabular}} 
+\newcommand{\CPOLITh}{ 
+ \begin{tabular}{l l} 
+ \includegraphics[height = 0.095\paperheight]{DC61_OlivineCPO75-100ChromiteGeoPoints.eps} & \includegraphics[height = 0.095\paperheight, trim={0 0 0.5cm 0},clip]{DC61_2_15deg_MisorientationChromite75-100.eps} \tabularnewline 
+ \end{tabular}} 
+\newcommand{\perctB }{ 
+ \begin{tabular}{l l} 
+ \percta & \CPOLITe \\ 
+ \perctb & \CPOLITf \\ 
+ \perctc & \CPOLITg \\ 
+ \perctd & \CPOLITh \\ 
+ \end{tabular}} 
+ \newcommand{\imgb}{ 
+ \begin{tabular}{l} 
+ \includegraphics[width= 0.4\linewidth, angle = -90]{DC61_BOUNDARYChromite.eps} \tabularnewline  
+ \end{tabular}} 
+
+\newcommand{\CPOLITi}{ 
+ \begin{tabular}{l l} 
+ \includegraphics[height = 0.095\paperheight]{blankCPO.eps} & \includegraphics[height = 0.095\paperheight, trim={0 0 0.5cm 0},clip]{blankMis.eps} \tabularnewline 
+ \end{tabular}} 
+\newcommand{\CPOLITj}{ 
+ \begin{tabular}{l l} 
+ \includegraphics[height = 0.095\paperheight]{blankCPO.eps} & \includegraphics[height = 0.095\paperheight, trim={0 0 0.5cm 0},clip]{blankMis.eps} \tabularnewline 
+ \end{tabular}} 
+\newcommand{\CPOLITk}{ 
+ \begin{tabular}{l l} 
+ \includegraphics[height = 0.095\paperheight]{blankCPO.eps} & \includegraphics[height = 0.095\paperheight, trim={0 0 0.5cm 0},clip]{blankMis.eps} \tabularnewline 
+ \end{tabular}} 
+\newcommand{\CPOLITl}{ 
+ \begin{tabular}{l l} 
+ \includegraphics[height = 0.095\paperheight]{blankCPO.eps} & \includegraphics[height = 0.095\paperheight, trim={0 0 0.5cm 0},clip]{blankMis.eps} \tabularnewline 
+ \end{tabular}} 
+\newcommand{\perctC }{ 
+ \begin{tabular}{l} 
+ \CPOLITi \\ 
+ \CPOLITj \\ 
+  \CPOLITk \\ 
+ \CPOLITl \\ 
+ \end{tabular}} 
+ \newcommand{\imgc}{ 
+ \begin{tabular}{l} 
+ \includegraphics[width= 0.55\linewidth, angle = -90]{blankMap.eps} \tabularnewline  
+ \end{tabular}} 
+
+\newcommand{\pie}{\begin{tabular}{|c} 
+ \includegraphics[scale = 0.17, trim={4.5cm 1.9cm 4.2cm 1.9cm},clip]{DC61pie.eps} 
+ \end{tabular} }
+\begin{document} 
+ 
+ \scriptsize 
+
+\begin{tikzpicture}[remember picture,overlay] 
+ \draw[very thick]  
+ ([yshift=27pt,xshift=25pt]current page.north west)-- 
+ ([yshift=27pt,xshift=-20pt]current page.north east)-- 
+ ([yshift=75pt,xshift=-20pt]current page.south east)-- 
+ ([yshift=75pt,xshift=25pt]current page.south west)--cycle; 
+ \end{tikzpicture} 
+
+\vspace{-2em}
+\begin{center} 
+ \begin{tabular}{c r} 
+  & \\ 
+  \huge{DC61\qquad \qquad \qquad \qquad \qquad \qquad D, SECTION B, r} &  \pie \\ 
+ \end{tabular} 
+  \end{center} 
+
+\begin{center} 
+ \vspace{-1em} 
+ \rule{0.95 \linewidth}{0.85pt} 
+ \vspace{-1em} 
+ \end{center} 
+
+ \begin{center} 
+ \begin{tabular}{l l} 
+ \points & \tab 
+ \end{tabular} 
+ \end{center} 
+
+\begin{center} 
+ \vspace{-1em} 
+ \rule{0.95 \linewidth}{0.85pt} 
+ \vspace{-1em} 
+ \end{center} 
+
+ \begin{tabular}{l r} 
+ \includegraphics[width=0.5\linewidth]{DC61_PHASES.eps} 
+ \includegraphics[width=0.3\linewidth]{DC61_OlivineEGDaw.eps} 
+ \end{tabular} 
+ 
+\begin{center} 
+ \vspace{-1em} 
+ \rule{0.95 \linewidth}{0.85pt} 
+ \vspace{-1em} 
+ \end{center} 
+
+\begin{tabular}{l l} 
+ \includegraphics[width=0.48 \linewidth]{DC61OlivineClinopyroxeneGROD.eps} & 
+ \includegraphics[width=0.45\linewidth]{DC61_OlivineORIENTATIONS.eps}  
+ \end{tabular} 
+
+\begin{center} 
+ \vspace{-1em} 
+ \rule{0.95 \linewidth}{0.85pt} 
+ \vspace{-1em} 
+ \end{center} 
+
+\begin{tabular}{l l} 
+ \tabCPOa & \minerala  \\  
+ \tabCPOb & \mineralb  \\  
+  \end{tabular} 
+
+\newpage 
+
+\begin{tikzpicture}[remember picture,overlay] 
+ \draw[very thick]  
+ ([yshift=27pt,xshift=25pt]current page.north west)-- 
+ ([yshift=27pt,xshift=-20pt]current page.north east)-- 
+ ([yshift=75pt,xshift=-20pt]current page.south east)-- 
+ ([yshift=75pt,xshift=25pt]current page.south west)--cycle; 
+ \end{tikzpicture} 
+
+\begin{center} 
+ \vspace{-1em} 
+ \vspace{-1em} 
+ \end{center} 
+
+\includegraphics[height=0.90 \paperheight]{DC61.eps} 
+
+\newpage 
+
+\begin{tikzpicture}[remember picture,overlay] 
+ \draw[very thick]  
+ ([yshift=27pt,xshift=25pt]current page.north west)-- 
+ ([yshift=27pt,xshift=-20pt]current page.north east)-- 
+ ([yshift=75pt,xshift=-20pt]current page.south east)-- 
+ ([yshift=75pt,xshift=25pt]current page.south west)--cycle; 
+ \end{tikzpicture} 
+
+\begin{tabular}{c l} 
+ \large{TRI LITAGES Clinopyroxene} & \large{MAP}   \tabularnewline 
+ \perctA  & \imga \tabularnewline 
+ \end{tabular} 
+  
+ \begin{tabular}{c l} 
+ \large{TRI LITAGES Chromite} & \large{MAP}   \tabularnewline 
+ \perctB  & \imgb \tabularnewline 
+ \end{tabular} 
+  
+ \newpage 
+
+\begin{tikzpicture}[remember picture,overlay] 
+ \draw[very thick]  
+ ([yshift=27pt,xshift=25pt]current page.north west)-- 
+ ([yshift=27pt,xshift=-20pt]current page.north east)-- 
+ ([yshift=75pt,xshift=-20pt]current page.south east)-- 
+ ([yshift=75pt,xshift=25pt]current page.south west)--cycle; 
+ \end{tikzpicture} 
+
+\begin{tabular}{c c} 
+  \LARGE{Olivine} & \LARGE{Clinopyroxene} \tabularnewline 
+ \tabularnewline 
+ \includegraphics[width = 0.37\linewidth]{DC61_OlivineEGDaw.eps} & \includegraphics[width = 0.37\linewidth]{ DC61_ClinopyroxeneEGDaw.eps} \tabularnewline 
+ \tabularnewline 
+ \includegraphics[width = 0.37\linewidth]{DC61_OlivineSFaw.eps} & \includegraphics[width = 0.37\linewidth]{ DC61_ClinopyroxeneSFaw.eps} \tabularnewline 
+ \end{tabular} 
+ \begin{center} 
+ \includegraphics[width = 0.95\linewidth]{DC61_SEISMICPROPERTIES.eps}
+ \end{center} 
+ 
+ \end{document}
